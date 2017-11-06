@@ -1,17 +1,22 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+  <ion-navbar color="wisteria">
+    <ion-title>SOFIA LEDS</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
+  <h3>Bienvenido a Botones LED</h3>
   <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
+    Este proyecto planea encender y a pagar unos led desde el celular, a través del raspberry.
   </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-list *ngFor="let led of leds; let i=index">
+    <ion-item>
+        <ion-avatar item-start>
+            <img *ngIf="led.value == 1" [src]="'./assets/imgs/'+led.icon">
+            <img *ngIf="led.value == 0" src="./assets/imgs/ledoff.jpeg">
+          </ion-avatar>
+      <ion-label> {{led.title}} - [{{led.gpio}}]</ion-label>
+      <ion-toggle [checked]="led.value == 1" (click)="onClick(i)" [color]="led.color"></ion-toggle>
+    </ion-item>
+  </ion-list>
 </ion-content>
