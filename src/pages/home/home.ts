@@ -16,6 +16,10 @@ export class HomePage {
 
   }
 
+  ionViewWillEnter() {
+    this.initData();
+  }
+
   initData() {
     this.leds = [
       { title: 'LED UNO', gpio: 11, value: 0, type: 1, color: 'danger', icon: 'ledred.jpeg' },
